@@ -37,6 +37,12 @@ const Gameboard = () => {
     fetchPokemonData();
   }, []);
 
+  const shufflePokemon = () => {
+    if (pokemonData) {
+      setPokemonData(shuffle(pokemonData));
+    }
+  }
+
   return (
     <>
       <div id="gameboard">
@@ -49,11 +55,12 @@ const Gameboard = () => {
                 key={pokemon.name}
                 pokemonName={pokemon.name}
                 pokemonSprite={pokemon.sprite}
+                onClick={shufflePokemon}
               />
             ))
           )}
         </div>
-        <button >Restart Game</button>
+        <button onClick={shufflePokemon}>Restart Game</button>
       </div>
     </>
   );

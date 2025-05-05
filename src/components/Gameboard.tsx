@@ -2,7 +2,6 @@ import { Pokedex } from "pokeapi-js-wrapper";
 import { useState, useEffect } from "react";
 import Gamecard from "./Gamecard";
 const Gameboard = () => {
-  // TODO: Move fetch function into Gameboard
   const [pokemonData, setPokemonData] = useState();
 
   //Shuffle array elements function to randomise placement

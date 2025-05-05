@@ -54,6 +54,18 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+#card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 4px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: green;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

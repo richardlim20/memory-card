@@ -14,6 +14,8 @@ const Gameboard = () => {
         "squirtle",
         "bulbasaur",
         "pikachu",
+        "lotad",
+        "magikarp",
       ];
       const data = [];
       for (const pokemonName of pokemonNames) {
@@ -28,18 +30,21 @@ const Gameboard = () => {
 
   return (
     <>
-      {!pokemonData ? (
-        <div>Loading...</div>
-      ) : (
-        pokemonData.map((pokemon) => (
-          <Gamecard
-            key={pokemon.name}
-            pokemonName={pokemon.name}
-            pokemonSprite={pokemon.sprite}
-          />
-        ))
-      )}
-      <div>Gameboard</div>
+      <div id="gameboard">
+        <div id="card-container">
+          {!pokemonData ? (
+            <div>Loading...</div>
+          ) : (
+            pokemonData.map((pokemon) => (
+              <Gamecard
+                key={pokemon.name}
+                pokemonName={pokemon.name}
+                pokemonSprite={pokemon.sprite}
+              />
+            ))
+          )}
+        </div>
+      </div>
     </>
   );
 };

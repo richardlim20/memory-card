@@ -1,8 +1,16 @@
-const Gamecard = ({ pokemonName, pokemonSprite }: {pokemonName: string; pokemonSprite: string;}) => {
+const Gamecard = ({
+  pokemonName,
+  pokemonSprite,
+}: {
+  pokemonName: string;
+  pokemonSprite: string;
+}) => {
   return (
     <>
-      <div>Gamecard</div>
+      <div className="card">
         <img src={pokemonSprite} alt={pokemonName}></img>
+        <div style={{ textTransform: "capitalize" }}>{pokemonName}</div>
+      </div>
     </>
   );
 };

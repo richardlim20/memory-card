@@ -4,9 +4,17 @@ import Gamecard from "./Gamecard";
 const Gameboard = () => {
   // TODO: Move fetch function into Gameboard
   const [pokemonData, setPokemonData] = useState();
+
+  //Shuffle array elements function to randomise placement
+  const shuffle = (array: string[]) => {
+    return array
+      .map((a) => ({ sort: Math.random(), value: a }))
+      .sort((a, b) => a.sort - b.sort)
+      .map((a) => a.value);
+  };
+
   useEffect(() => {
     const fetchPokemonData = async () => {
-      const P = new Pokedex();
       const pokemonNames = [
         "golduck",
         "psyduck",
@@ -17,8 +25,10 @@ const Gameboard = () => {
         "lotad",
         "magikarp",
       ];
+      const P = new Pokedex();
       const data = [];
-      for (const pokemonName of pokemonNames) {
+      const shuffledPokemon = shuffle(pokemonNames)
+      for (const pokemonName of shuffledPokemon) {
         const pokemon = await P.getPokemonByName(pokemonName);
         const pokemonSprite = pokemon.sprites.front_default;
         data.push({ name: pokemonName, sprite: pokemonSprite });
@@ -44,6 +54,7 @@ const Gameboard = () => {
             ))
           )}
         </div>
+        <button >Restart Game</button>
       </div>
     </>
   );

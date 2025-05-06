@@ -73,8 +73,10 @@ const Gameboard = () => {
 
   return (
     <>
-      <div>Score: {score}</div>
-      <div>Highscore: {calculateHighscore(score)}</div>
+      <div id="scoreboard">
+        <div>Score: {score}</div>
+        <div>Highscore: {calculateHighscore(score)}</div>
+      </div>
       <div id="gameboard">
         <div id="card-container">
           {!pokemonData ? (

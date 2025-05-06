@@ -58,6 +58,7 @@ button:focus-visible {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 4px;
+  margin-bottom: 32px;
 }
 
 .card {
@@ -68,6 +69,13 @@ button:focus-visible {
 
 .card:hover {
   opacity: 0.5;
+}
+
+#scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
 }
 
 @media (prefers-color-scheme: light) {

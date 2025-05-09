@@ -1,11 +1,12 @@
 import { Pokedex } from "pokeapi-js-wrapper";
 import { useState, useEffect } from "react";
 import Gamecard from "./Gamecard";
+
 const Gameboard = () => {
-  const [pokemonData, setPokemonData] = useState();
-  const [clickedPokemon, setClickedPokemon] = useState<string[]>([]);
-  const [score, setScore] = useState<number>(0);
-  const [highscore, setHighscore] = useState<number>(0);
+  const [pokemonData, setPokemonData] = useState([]);
+  const [clickedPokemon, setClickedPokemon] = useState([]);
+  const [score, setScore] = useState(0);
+  const [highscore, setHighscore] = useState(0);
 
   useEffect(() => {
     const fetchPokemonData = async () => {
@@ -32,8 +33,7 @@ const Gameboard = () => {
     fetchPokemonData();
   }, []);
 
-  //Shuffle array elements function to randomise placement
-  const shuffle = (array: string[]) => {
+  const shuffle = (array) => {
     return array
       .map((a) => ({ sort: Math.random(), value: a }))
       .sort((a, b) => a.sort - b.sort)
@@ -42,7 +42,7 @@ const Gameboard = () => {
 
   const shufflePokemon = () => {
     if (pokemonData) {
-      setPokemonData(shuffle(pokemonData));
+      setPokemonData(shuffle([...pokemonData]));
     }
   };
 
@@ -53,13 +53,13 @@ const Gameboard = () => {
     return highscore;
   };
 
-  const handlePokemonClick = (pokemonName: string) => {
+  const handlePokemonClick = (pokemonName) => {
     if (clickedPokemon.includes(pokemonName)) {
       setScore(0);
       setClickedPokemon([]);
     } else {
-      clickedPokemon.push(pokemonName);
-      setScore(clickedPokemon.length);
+      setClickedPokemon((prev) => [...prev, pokemonName]);
+      setScore((prev) => prev + 1);
     }
     shufflePokemon();
   };
@@ -79,7 +79,7 @@ const Gameboard = () => {
       </div>
       <div id="gameboard">
         <div id="card-container">
-          {!pokemonData ? (
+          {!pokemonData.length ? (
             <div>Loading...</div>
           ) : (
             pokemonData.map((pokemon) => (

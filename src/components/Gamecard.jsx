@@ -1,12 +1,4 @@
-const Gamecard = ({
-  pokemonName,
-  pokemonSprite,
-  onClick,
-}: {
-  pokemonName: string;
-  pokemonSprite: string;
-  onClick: () => void;
-}) => {
+const Gamecard = ({ pokemonName, pokemonSprite, onClick }) => {
   return (
     <>
       <div className="card" onClick={onClick}>
